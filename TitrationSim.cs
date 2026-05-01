@@ -55,10 +55,36 @@ public class TitrationSim
       |###############|
     `;
 
+    public static void startGame()
+    {
+        Console.WriteLine("Welcome to Titration Simulator!");
+        Console.WriteLine()"..............................");
+        string type;
+        Console.WriteLine("Type SS for Strong Acid, Strong base \n" +
+                          " WS for Weak Acid, Strong base \n" +
+                          " SW for Strong Acid, Weak base");
+        type = Console.ReadLine();
+        switch (type)
+        {
+            case "SS":
+                Console.WriteLine("Find the molarity of Pool Acid");
+                StrongStrong();
+            case "WS":
+                Console.WriteLine("Find the molarity of Acetic Acid in Household Vineger");
+                WeakStrong();
+            case "SW":
+                Console.WriteLine("Find the molarity of Lemon Juice");
+                StrongWeak();
+            default:
+                Console.WriteLine("Invalid Input, please try again");
+                break;
+        }
+    }
+
         
         
-        private string[] pairs = {"Standard", "Vinegar", "Ammonia"};
-        private double[,] values = new double { {0.100, 25.00, 0.1, 24.85, 1, 1}, {0.8, 10.00, 0.500, 16.67, 0, 1}, {0.250, 32.10, 0.4, 20.00, 1, 0} };
+    private string[] pairs = {"Standard", "Vinegar", "Ammonia"};
+    private double[,] values = new double { {0.100, 25.00, 0.1, 24.85, 1, 1}, {0.8, 10.00, 0.500, 16.67, 0, 1}, {0.250, 32.10, 0.4, 20.00, 1, 0} };
     
     
     
