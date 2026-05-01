@@ -15,7 +15,9 @@ public class TitrationSim
      * n_A = H+ ions per acid molecule (e.g., HCl = 1, H2C2O4 = 2)
      * n_B = OH- ions per base molecule (e.g., NaOH = 1, Ba(OH)2 = 2)
      */
-
+        
+        private string[] pairs = {"Standard", "Vinegar", "Ammonia"};
+        private double[,] values = new double { {0.100, 25.00, 0.1, 24.85, 1, 1}, {0.8, 10.00, 0.500, 16.67, 0, 1}, {0.250, 32.10, 0.4, 20.00, 1, 0} };
     
     
     
