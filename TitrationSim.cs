@@ -55,6 +55,11 @@ public class TitrationSim
       |###############|
     `;
 
+     static public void Main()
+    {
+        startGame();
+    }
+
     public static void startGame()
     {
         Console.WriteLine("Welcome to Titration Simulator!");
@@ -68,23 +73,55 @@ public class TitrationSim
         {
             case "SS":
                 Console.WriteLine("Find the molarity of Pool Acid");
-                StrongStrong();
+                needed = TRUNC(values[0][3]); //should be able to randomize l8r
+                
             case "WS":
                 Console.WriteLine("Find the molarity of Acetic Acid in Household Vineger");
-                WeakStrong();
+                needed = TRUNC(values[1][3]);
             case "SW":
                 Console.WriteLine("Find the molarity of Lemon Juice");
-                StrongWeak();
+                needed = TRUNC(values[2]1]);
             default:
                 Console.WriteLine("Invalid Input, please try again");
                 break;
         }
     }
 
+    public int void titration(string type)
+    {
+        int titrant;
         
+        Console.WriteLine("Enter amount of titrant of Pool Acid");
+        titrant += (int)Console.Read();
         
-    private string[] pairs = {"Standard", "Vinegar", "Ammonia"};
-    private double[,] values = new double { {0.100, 25.00, 0.1, 24.85, 1, 1}, {0.8, 10.00, 0.500, 16.67, 0, 1}, {0.250, 32.10, 0.4, 20.00, 1, 0} };
+        while (titrant < needed)
+        {
+            printChanges(titrant, needed);
+            Console.WriteLine("Too little titrant. Enter more");
+            titrant += (int)Console.Read();
+
+            if (titrant + 2 >= needed)
+            {
+                Console.WriteLine("So close....be more precise");
+            }
+
+            if (titrant == needed)
+            {
+                printChanges(titrant, needed);
+                Console.WriteLine("Perfect titration!!! Thanks for playing");
+                break;
+            }
+
+            if (titrant > needed)
+            {
+                printChanges(titrant, needed);
+                Console.WriteLine("You added too much titrant. Time to start over!");
+                break;
+            }
+            
+        }
+
+    }
     
     
 
