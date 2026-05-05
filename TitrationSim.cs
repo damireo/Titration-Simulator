@@ -87,5 +87,49 @@ public class TitrationSim
     private double[,] values = new double { {0.100, 25.00, 0.1, 24.85, 1, 1}, {0.8, 10.00, 0.500, 16.67, 0, 1}, {0.250, 32.10, 0.4, 20.00, 1, 0} };
     
     
+
+
+    static void printChanges(int added, int needed)
+    {
+     if (added < needed)
+     {
+      Console.WriteLine("
+         |       |
+         |       |
+        /         \\
+       /           \\
+      |~~~~~~~~~~~~~|  
+      |_____________| ");  //pH is far from endpoint. Solution remains clear.
+      //Clear Liquid
+     }
+     
+     else if (added = needed)
+     {
+      Console.WriteLine("
+         |       |
+         |       |
+        /     *   \\
+       /  *  ~  +  \\
+      |.* .+ .+ ~* .| 
+      |_____________| ");  //Exact stoichiometric balance. Very faint shading to show the pale pink or pale yellow.
+     //Faint Tint (Endpoint)
+     }
     
+    else if (added > needed)
+    {
+        Console.WriteLine("
+         |       |
+         |       |
+        /         \\
+       /###########\\
+      |#############|
+      |#############|  ");  //Past equivalence. pH has swung wildly
+      //Dark/Opaque (Ruined)
+    }
+    }
+
+static public void Main()
+    {
+        startGame();
+    }
 }
