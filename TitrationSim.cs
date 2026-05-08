@@ -128,41 +128,69 @@ public class TitrationSim
 
     static void printChanges(int added, int needed)
     {
-     if (added < needed)
-     {
-      Console.WriteLine("
+        Console.WriteLine(@"
          |       |
          |       |
-        /         \\
-       /           \\
+        /         \
+       /           \
+      |~~~~~~~~~~~~~|  
+      |_____________| ");  //original without anything added
+        
+        //Top Line
+        System.Threading.Thread.Sleep(10);
+        Console.SetCursorPosition(0, Console.CursorTop - 6);  //moves to line 52
+        Console.Write("|   .   |");
+ 
+        //Second Line
+        System.Threading.Thread.Sleep(10);
+        //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
+        Console.Write("|       |");  //this replaces what was previously done
+        //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
+        Console.Write("|   .   |");
+
+        //Third Line
+        System.Threading.Thread.Sleep(10);
+        //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
+        Console.Write("|       |");  //this replaces what was previously done
+        //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
+        Console.Write("|   .   |");
+        Console.SetCursorPosition(0, Console.CursorTop - 8);  //moves to line 52
+
+        if (added < needed)
+        {
+            Console.WriteLine(@"
+         |       |
+         |       |
+        /         \
+       /           \
       |~~~~~~~~~~~~~|  
       |_____________| ");  //pH is far from endpoint. Solution remains clear.
-      //Clear Liquid
-     }
+        //Clear Liquid
+        }
      
-     else if (added = needed)
-     {
-      Console.WriteLine("
+        else if (added = needed)
+        {
+            Console.WriteLine(@"
          |       |
          |       |
-        /     *   \\
-       /  *  ~  +  \\
+        /     *   \
+       /  *  ~  +  \
       |.* .+ .+ ~* .| 
       |_____________| ");  //Exact stoichiometric balance. Very faint shading to show the pale pink or pale yellow.
-     //Faint Tint (Endpoint)
-     }
+        //Faint Tint (Endpoint)
+        }
     
-    else if (added > needed)
-    {
-        Console.WriteLine("
+        else if (added > needed)
+        {
+            Console.WriteLine(@"
          |       |
          |       |
-        /         \\
-       /###########\\
+        /         \
+       /###########\
       |#############|
-      |#############|  ");  //Past equivalence. pH has swung wildly
-      //Dark/Opaque (Ruined)
-    }
+      |#############| ");  //Past equivalence. pH has swung wildly
+            //Dark/Opaque (Ruined)
+        }
     }
 
 static public void Main()
