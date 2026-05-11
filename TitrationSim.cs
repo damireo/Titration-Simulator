@@ -20,50 +20,15 @@ public class TitrationSim
  * 1. TOO LITTLE (Before Equivalence Point)
  * State: pH is far from endpoint. Solution remains clear.
  */
-    const TOO_LITTLE = `
-         |       |
-         |       |
-        /         \\
-       /           \\
-      |~~~~~~~~~~~~~|  <-- Clear Liquid
-      |_____________|
-    `;
-
-/* * 2. PERFECT (The Endpoint)
- * State: Exact stoichiometric balance. 
- * Visual: Very faint shading to show the "pale pink" or "pale yellow."
- */
-    const PERFECT = `
-         |       |
-         |       |
-        /         \\
-       /  .  .  .  \\
-      |.. .. .. .. .|  <-- Faint Tint (Endpoint)
-      |_____________|
-    `;
-
-/* * 3. TOO MUCH (Over-titrated)
- * State: Past equivalence. pH has swung wildly.
- * Visual: Dense characters to show deep, dark color.
- */
-    const TOO_MUCH = `
-         |       |
-         |       |
-        /           \\
-       /#############\\
-      |###############| <-- Dark/Opaque (Ruined)
-      |###############|
-    `;
-
-     static public void Main()
-    {
-        startGame();
-    }
+        private static double[,] values =
+{
+    {0.100, 25.00, 0.1, 24.85, 1, 1}, {0.8, 10.00, 0.500, 16.67, 0, 1}, {0.250, 32.10, 0.4, 20.00, 1, 0}
+};
 
     public static void startGame()
     {
         Console.WriteLine("Welcome to Titration Simulator!");
-        Console.WriteLine()"..............................");
+        Console.WriteLine("..............................");
         string type;
         Console.WriteLine("Type SS for Strong Acid, Strong base \n" +
                           " WS for Weak Acid, Strong base \n" +
@@ -73,26 +38,26 @@ public class TitrationSim
         {
             case "SS":
                 Console.WriteLine("Find the molarity of Pool Acid");
-                needed = TRUNC(values[0][3]); //should be able to randomize l8r
+                needed = (int)values[0, 3]; //should be able to randomize l8r
                 
             case "WS":
                 Console.WriteLine("Find the molarity of Acetic Acid in Household Vineger");
-                needed = TRUNC(values[1][3]);
+                needed = (int)values[1, 3];
             case "SW":
                 Console.WriteLine("Find the molarity of Lemon Juice");
-                needed = TRUNC(values[2]1]);
+                needed = (int)values[2, 1];;
             default:
                 Console.WriteLine("Invalid Input, please try again");
                 break;
         }
     }
 
-    public int void titration(string type)
+    public void titration(string type)
     {
         int titrant;
         
         Console.WriteLine("Enter amount of titrant of Pool Acid");
-        titrant += (int)Console.Read();
+        titrant += (int)Convert.ToInt32(Console.ReadLine());
         
         while (titrant < needed)
         {
@@ -168,7 +133,7 @@ public class TitrationSim
         //Clear Liquid
         }
      
-        else if (added = needed)
+        else if (added == needed)
         {
             Console.WriteLine(@"
          |       |
