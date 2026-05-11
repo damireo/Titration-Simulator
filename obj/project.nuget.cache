@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "cNy9ON/wycVHvxJqIzBrjr2OtYQhm979JtW/bztk2+wnv1ZZ10LM6SwZrF+B+WhfCZ7yjcR84MRVOaeK96+gfA==",
+  "dgSpecHash": "wFHcfdcqkhI=",
   "success": true,
-  "projectFilePath": "/home/runner/workspace/TitrationSim.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\joshu\\Downloads\\Titration-Simulator\\Titration-Simulator\\TitrationSim.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joshu\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\joshu\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\joshu\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\joshu\\.nuget\\packages\\microsoft.netcore.app.host.win-arm64\\7.0.20\\microsoft.netcore.app.host.win-arm64.7.0.20.nupkg.sha512"
+  ],
   "logs": []
 }
