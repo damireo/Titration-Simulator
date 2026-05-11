@@ -1,8 +1,8 @@
-﻿namespace DefaultNamespace;
+namespace DefaultNamespace;
 
 public class TitrationSim
 {
-        /* * TITRATION SIMULATION REFERENCE DATA
+    /* * TITRATION SIMULATION REFERENCE DATA
      * Formula: (n_acid * M_acid * V_acid) = (n_base * M_base * V_base)
      * ---------------------------------------------------------------------------
      * Scenario      | M_A (M) | V_A (mL) | M_B (M) | V_B (mL) | n_A | n_B | Type
@@ -15,57 +15,61 @@ public class TitrationSim
      * n_A = H+ ions per acid molecule (e.g., HCl = 1, H2C2O4 = 2)
      * n_B = OH- ions per base molecule (e.g., NaOH = 1, Ba(OH)2 = 2)
      */
-/* * TITRATION PHASE VISUALS (Analyte Flask)
- * ---------------------------------------------------------
- * 1. TOO LITTLE (Before Equivalence Point)
- * State: pH is far from endpoint. Solution remains clear.
- */
-        private static double[,] values =
-{
-    {0.100, 25.00, 0.1, 24.85, 1, 1}, {0.8, 10.00, 0.500, 16.67, 0, 1}, {0.250, 32.10, 0.4, 20.00, 1, 0}
-};
+
+    private static double[,] values =
+    {
+        {0.100, 25.00, 0.1, 24.85, 1, 1},
+        {0.8, 10.00, 0.500, 16.67, 0, 1},
+        {0.250, 32.10, 0.4, 20.00, 1, 0}
+    };
+
+    private static int needed = 0;
 
     public static void startGame()
     {
         Console.WriteLine("Welcome to Titration Simulator!");
         Console.WriteLine("..............................");
-        string type;
         Console.WriteLine("Type SS for Strong Acid, Strong base \n" +
                           " WS for Weak Acid, Strong base \n" +
                           " SW for Strong Acid, Weak base");
-        type = Console.ReadLine();
+        string type = Console.ReadLine() ?? "";
         switch (type)
         {
             case "SS":
                 Console.WriteLine("Find the molarity of Pool Acid");
-                needed = (int)values[0, 3]; //should be able to randomize l8r
-                
+                needed = (int)values[0, 3];
+                break;
             case "WS":
-                Console.WriteLine("Find the molarity of Acetic Acid in Household Vineger");
+                Console.WriteLine("Find the molarity of Acetic Acid in Household Vinegar");
                 needed = (int)values[1, 3];
+                break;
             case "SW":
                 Console.WriteLine("Find the molarity of Lemon Juice");
-                needed = (int)values[2, 1];;
+                needed = (int)values[2, 1];
+                break;
             default:
                 Console.WriteLine("Invalid Input, please try again");
-                break;
+                startGame();
+                return;
         }
+        titration(type);
     }
 
-    public void titration(string type)
+    public static void titration(string type)
     {
-        int titrant;
-        
-        Console.WriteLine("Enter amount of titrant of Pool Acid");
-        titrant += (int)Convert.ToInt32(Console.ReadLine());
-        
+        int titrant = 0;
+
+        Console.WriteLine("Enter amount of titrant:");
+        titrant += Convert.ToInt32(Console.ReadLine());
+
         while (titrant < needed)
         {
             printChanges(titrant, needed);
-            Console.WriteLine("Too little titrant. Enter more");
-            titrant += (int)Console.Read();
+            Console.WriteLine("Too little titrant. Enter more:");
+            int extra = Convert.ToInt32(Console.ReadLine());
+            titrant += extra;
 
-            if (titrant + 2 >= needed)
+            if (titrant + 2 >= needed && titrant < needed)
             {
                 Console.WriteLine("So close....be more precise");
             }
@@ -74,53 +78,31 @@ public class TitrationSim
             {
                 printChanges(titrant, needed);
                 Console.WriteLine("Perfect titration!!! Thanks for playing");
-                break;
+                return;
             }
 
             if (titrant > needed)
             {
                 printChanges(titrant, needed);
                 Console.WriteLine("You added too much titrant. Time to start over!");
-                break;
+                return;
             }
-            
         }
 
+        if (titrant == needed)
+        {
+            printChanges(titrant, needed);
+            Console.WriteLine("Perfect titration!!! Thanks for playing");
+        }
+        else if (titrant > needed)
+        {
+            printChanges(titrant, needed);
+            Console.WriteLine("You added too much titrant. Time to start over!");
+        }
     }
-    
-    
-
 
     static void printChanges(int added, int needed)
     {
-        Console.WriteLine(@"
-         |       |
-         |       |
-        /         \
-       /           \
-      |~~~~~~~~~~~~~|  
-      |_____________| ");  //original without anything added
-        
-        //Top Line
-        System.Threading.Thread.Sleep(10);
-        Console.SetCursorPosition(0, Console.CursorTop - 6);  //moves to line 52
-        Console.Write("|   .   |");
- 
-        //Second Line
-        System.Threading.Thread.Sleep(10);
-        //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
-        Console.Write("|       |");  //this replaces what was previously done
-        //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
-        Console.Write("|   .   |");
-
-        //Third Line
-        System.Threading.Thread.Sleep(10);
-        //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
-        Console.Write("|       |");  //this replaces what was previously done
-        //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
-        Console.Write("|   .   |");
-        Console.SetCursorPosition(0, Console.CursorTop - 8);  //moves to line 52
-
         if (added < needed)
         {
             Console.WriteLine(@"
@@ -129,10 +111,9 @@ public class TitrationSim
         /         \
        /           \
       |~~~~~~~~~~~~~|  
-      |_____________| ");  //pH is far from endpoint. Solution remains clear.
-        //Clear Liquid
+      |_____________| ");
+            Console.WriteLine("State: Clear (before equivalence point)");
         }
-     
         else if (added == needed)
         {
             Console.WriteLine(@"
@@ -141,10 +122,9 @@ public class TitrationSim
         /     *   \
        /  *  ~  +  \
       |.* .+ .+ ~* .| 
-      |_____________| ");  //Exact stoichiometric balance. Very faint shading to show the pale pink or pale yellow.
-        //Faint Tint (Endpoint)
+      |_____________| ");
+            Console.WriteLine("State: Faint Tint (endpoint reached!)");
         }
-    
         else if (added > needed)
         {
             Console.WriteLine(@"
@@ -153,12 +133,12 @@ public class TitrationSim
         /         \
        /###########\
       |#############|
-      |#############| ");  //Past equivalence. pH has swung wildly
-            //Dark/Opaque (Ruined)
+      |#############| ");
+            Console.WriteLine("State: Dark/Opaque (past equivalence - ruined!)");
         }
     }
 
-static public void Main()
+    public static void Main()
     {
         startGame();
     }

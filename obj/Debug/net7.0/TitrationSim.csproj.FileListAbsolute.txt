@@ -1,0 +1,14 @@
+/home/runner/workspace/bin/Debug/net7.0/TitrationSim
+/home/runner/workspace/bin/Debug/net7.0/TitrationSim.deps.json
+/home/runner/workspace/bin/Debug/net7.0/TitrationSim.runtimeconfig.json
+/home/runner/workspace/bin/Debug/net7.0/TitrationSim.dll
+/home/runner/workspace/bin/Debug/net7.0/TitrationSim.pdb
+/home/runner/workspace/obj/Debug/net7.0/TitrationSim.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/workspace/obj/Debug/net7.0/TitrationSim.AssemblyInfoInputs.cache
+/home/runner/workspace/obj/Debug/net7.0/TitrationSim.AssemblyInfo.cs
+/home/runner/workspace/obj/Debug/net7.0/TitrationSim.csproj.CoreCompileInputs.cache
+/home/runner/workspace/obj/Debug/net7.0/TitrationSim.dll
+/home/runner/workspace/obj/Debug/net7.0/refint/TitrationSim.dll
+/home/runner/workspace/obj/Debug/net7.0/TitrationSim.pdb
+/home/runner/workspace/obj/Debug/net7.0/TitrationSim.genruntimeconfig.cache
+/home/runner/workspace/obj/Debug/net7.0/ref/TitrationSim.dll
