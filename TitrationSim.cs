@@ -103,6 +103,36 @@ public class TitrationSim
 
     static void printChanges(int added, int needed)
     {
+        Console.WriteLine(@"
+        |       |
+        |       |
+       /         \
+      /           \
+     |~~~~~~~~~~~~~| 
+     |_____________| ");  //original without anything added
+      
+       //Top Line
+       System.Threading.Thread.Sleep(10);
+       Console.SetCursorPosition(0, Console.CursorTop - 6);  //moves to line 52
+       Console.Write("|   .   |");
+
+
+       //Second Line
+       System.Threading.Thread.Sleep(10);
+       //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
+       Console.Write("|       |");  //this replaces what was previously done
+       //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
+       Console.Write("|   .   |");
+
+
+       //Third Line
+       System.Threading.Thread.Sleep(10);
+       //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
+       Console.Write("|       |");  //this replaces what was previously done
+       //Console.SetCursorPosition(0, Console.CursorTop - 1);  //keeps it on the same line
+       Console.Write("|   .   |");
+       Console.SetCursorPosition(0, Console.CursorTop - 8);  //moves to line 52
+
         if (added < needed)
         {
             Console.WriteLine(@"
