@@ -117,8 +117,8 @@ public class TitrationSim
             Console.SetCursorPosition(12, Console.CursorTop - 6 + i);  //keeps it on the same line
             Console.Write(".");
             System.Threading.Thread.Sleep(250);
-            Console.SetCursorPosition(startX, startY + i);
             Console.Write(" ");
+            Console.SetCursorPosition(12, Console.CursorTop + 6 - i);
         }
 
         if (added < needed)
